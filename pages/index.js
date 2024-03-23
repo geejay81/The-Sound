@@ -1,22 +1,29 @@
 import Link from 'next/link';
 
 import Footer from '../components/Footer';
-import Header from '../components/Header';
 import Layout, { GradientBackground } from '../components/Layout';
 import ArrowIcon from '../components/ArrowIcon';
 import { getGlobalData } from '../utils/global-data';
 import SEO from '../components/SEO';
 import { getProjects } from '../utils/mdx-projects-utils';
+import Navbar from '../components/Navbar';
 
 export default function Index({ projects, globalData }) {
   return (
     <Layout>
       <SEO title={globalData.name} description={globalData.projectsTitle} />
-      <Header name={globalData.name} />
+      <Navbar />
       <main className="w-full">
         <h1 className="text-3xl lg:text-5xl text-center mb-12 heading">
-          {globalData.projectsTitle}
+          Welcome to The Sound
         </h1>
+        <div id="opening-paragraph" className='my-5'>
+          <p className='my-5'>The Sound is a group of hobbyist developers, producing applications that interest them, while honing their skills in technologies they are keen to learn.</p>
+          <p className='my-5'>This website acts as a hub and showcase for these projects.</p>
+        </div>
+        <h2 className="text-3xl lg:text-3xl text-center mb-12 heading">
+          Projects
+        </h2>
         <ul className="w-full">
           {projects.map((project) => (
             <li
