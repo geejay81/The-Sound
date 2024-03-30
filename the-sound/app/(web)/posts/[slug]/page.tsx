@@ -1,5 +1,5 @@
 import Hero from "@/components/page/Hero";
-import { getPost, getPostBySlug } from "@/utils/mdx-posts-utils"
+import { getPost, getPostBySlug } from "@/utils/mdx-utils"
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 

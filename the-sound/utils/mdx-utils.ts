@@ -7,9 +7,14 @@ import remarkGfm from 'remark-gfm';
 import Post from '../types/Post';
 
 export const POSTS_PATH = path.join(process.cwd(), 'posts');
+export const PROJECTS_PATH = path.join(process.cwd(), 'projects');
 
 export const postFilePaths = fs
   .readdirSync(POSTS_PATH)
+  .filter((path) => /\.mdx?$/.test(path));
+
+export const projectsFilePaths = fs
+  .readdirSync(PROJECTS_PATH)
   .filter((path) => /\.mdx?$/.test(path));
 
 // export const sortPostsByDate = (posts: Post) => {
@@ -50,27 +55,25 @@ export const postFilePaths = fs
     }
   }
 
-  export const markdownOptions = {
+  const markdownOptions = {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
       rehypePlugins: [rehypePrism],
     }
   }
 
-  export const getPostBySlug = async (slug: string) => {
-    const postFilePath = path.join(POSTS_PATH, `${slug}.mdx`);
-    const source = fs.readFileSync(postFilePath);
-  
+
+export const getProjects = () => {
+  let projects = projectsFilePaths.map((filePath) => {
+    const source = fs.readFileSync(path.join(PROJECTS_PATH, filePath));
     const { content, data } = matter(source);
 
-    const mdxSource = await serialize(content, {
-      // Optionally pass remark/rehype plugins
-      mdxOptions: {
-        remarkPlugins: [remarkGfm],
-        rehypePlugins: [rehypePrism],
-      },
-      scope: data,
-    });
-  
-    return { mdxSource, data, postFilePath };
-  };
+    return {
+      content,
+      data,
+      filePath,
+    };
+  });
+
+  return projects;
+}

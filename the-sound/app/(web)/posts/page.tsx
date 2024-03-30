@@ -1,6 +1,6 @@
 import Footer from "@/components/page/Footer";
 import Hero from "@/components/page/Hero";
-import { getPosts } from "@/utils/mdx-posts-utils";
+import { getPosts } from "@/utils/mdx-utils";
 import { Metadata } from "next";
 import Link from "next/link";
 
@@ -20,7 +20,7 @@ export default function BlogLandingPage() {
                 flex flex-col md:flex-row space-x-3">
                 <div className="md:w-7/12">
                     {posts && 
-                        <ul>
+                        <ul className="">
                             {posts.map((post: any) => (
                                 <li key={post.filePath}>
                                     <Link
