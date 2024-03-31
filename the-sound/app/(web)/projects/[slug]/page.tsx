@@ -19,10 +19,10 @@ export default async function ProjectPage({ params }: Props) {
         <div>
             <Hero heading={frontMatter.title} description={frontMatter.description} />
             <main className="container mx-auto max-w-l p-6 md:pt-16 md:pb-10 space-y-3 flex flex-col md:flex-row md:items-start md:justify-between grow">
-                <div className="prose prose-lg max-w-none md:w-8/12">
+                <div className="prose prose-lg max-w-none md:w-7/12">
                     <MDXRemote source={content} options={markdownOptions} />
                 </div>
-                <div className="md:w-3/12 prose prose-lg">
+                <div className="prose prose-lg md:w-4/12">
                     <dl>
                         <dt>Visit project site:</dt>
                         <dd>

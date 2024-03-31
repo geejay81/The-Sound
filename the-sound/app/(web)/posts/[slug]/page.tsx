@@ -16,10 +16,11 @@ export default async function BlogPost({ params }: Props) {
     return (
         <div>
             <Hero heading={frontMatter.title} description="" />
-            <main className="container mx-auto max-w-l p-6 md:pt-16 md:pb-10 space-y-3">
-                <div className="prose prose-lg max-w-none grow">
+            <main className="container mx-auto max-w-l p-6 md:pt-16 md:pb-10 space-y-3 flex flex-col md:flex-row md:items-start md:justify-between grow">
+                <div className="prose prose-lg max-w-none md:w-7/12">
                     <MDXRemote source={content} options={markdownOptions} />
                 </div>
+                <div className="md:w-4/12">{/* Categories here */}</div>
             </main>
             <Footer />
         </div>
