@@ -77,3 +77,16 @@ export const getProjects = () => {
 
   return projects;
 }
+
+export const getProject = async (slug: string) => {
+  const projectFilePath = path.join(PROJECTS_PATH, `${slug}.mdx`);
+  const source = fs.readFileSync(projectFilePath);
+  const { data: frontMatter, content } = matter(source);
+
+  return {
+      frontMatter,
+      slug,
+      content,
+      markdownOptions
+  }
+}

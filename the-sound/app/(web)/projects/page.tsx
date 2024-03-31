@@ -17,7 +17,7 @@ export default function ProjectsLandingPage() {
         <>
             <Hero heading={"Projects"} description="Stuff we've been working on" />
             <main className="container mx-auto max-w-l p-6 md:pt-16 md:pb-10 space-y-3
-                flex flex-col md:flex-row space-x-3">
+                flex flex-col md:flex-row space-x-3 grow">
                 <div className="md:w-7/12">
                     {projects && 
                         <ul>
