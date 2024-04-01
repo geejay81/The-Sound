@@ -5,7 +5,6 @@ import Navbar from "@/components/page/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
-
 export const metadata: Metadata = {
   title: "The Sound",
   description: "Web projects, games, quizzes and fun.",
