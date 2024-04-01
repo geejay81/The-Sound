@@ -5,10 +5,17 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-
 type Props = {
     params: { slug: string }
 };
+
+export async function generateMetadata({ params }: Props) {
+    const { frontMatter } = await getProject(params.slug);
+    return {
+        title: frontMatter.title,
+        description: frontMatter.description
+    }
+}
 
 export default async function ProjectPage({ params }: Props) {
     const { frontMatter, slug, content, markdownOptions } = await getProject(params.slug);
@@ -19,10 +26,10 @@ export default async function ProjectPage({ params }: Props) {
         <div>
             <Hero heading={frontMatter.title} description={frontMatter.description} />
             <main className="container mx-auto max-w-l p-6 md:pt-16 md:pb-10 space-y-3 flex flex-col md:flex-row md:items-start md:justify-between grow">
-                <div className="prose prose-lg max-w-none md:w-7/12">
+                <div className="prose md:prose-lg max-w-none md:w-7/12">
                     <MDXRemote source={content} options={markdownOptions} />
                 </div>
-                <div className="prose prose-lg md:w-4/12">
+                <div className="prose md:prose-lg md:w-4/12">
                     <dl>
                         <dt>Visit project site:</dt>
                         <dd>
