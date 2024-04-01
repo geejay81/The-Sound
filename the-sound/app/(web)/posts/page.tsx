@@ -17,7 +17,7 @@ export default function BlogLandingPage() {
         <>
             <Hero heading={"Blog"} description="Recent blog posts" />
             <main className="container mx-auto max-w-l p-6 md:pt-16 md:pb-10 space-y-3
-                flex flex-col md:flex-row space-x-3 grow">
+                flex flex-col md:flex-row space-x-3">
                 <div className="md:w-7/12">
                     {posts && 
                         <ul className="space-y-4">
