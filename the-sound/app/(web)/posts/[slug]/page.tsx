@@ -15,7 +15,7 @@ export default async function BlogPost({ params }: Props) {
 
     return (
         <div>
-            <Hero heading={frontMatter.title} description="" />
+            <Hero heading={frontMatter.title} description={frontMatter.date} />
             <main className="container mx-auto max-w-l p-6 md:pt-16 md:pb-10 space-y-3 flex flex-col md:flex-row md:items-start md:justify-between grow">
                 <div className="prose prose-lg max-w-none md:w-7/12">
                     <MDXRemote source={content} options={markdownOptions} />

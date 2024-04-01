@@ -1,0 +1,45 @@
+---
+title: "Google Fonts with Next.js and Tailwind"
+description: "A little trick I've learned for using google fonts in particular places in Next.js."
+date: April 1 2024
+---
+
+When building a new website with Next.js 14, using the App Router, I wanted to use a particular Google font for the logo in the Navbar component. 
+
+There was quite a bit of documentation on the web, but all seemed to be related to setting a google font as the base font across all text on the site, so I decided to try and implement a function that I would import only in to the components where it was required.
+
+## Approach
+
+I created a Logo.ts file that exports a **NextFont** object, by calling a specific font related function. 
+The file exports an object called **logo** as it is the font used for the logo in the **Navbar** component.
+
+``` ts
+// /ui/font/logo.js
+
+import { Fredericka_the_Great } from "next/font/google";
+
+const logo = Fredericka_the_Great({
+    subsets: ['latin'],
+    weight: ['400'],
+    variable: '--font-fredericka'
+});
+
+export default logo;
+```
+
+This object can now be imported into the component where it is needed.
+
+``` ts
+// /components/page/Navbar.tsx
+import logo from "../../ui/fonts/Logo";
+...
+```
+
+The logo object will have a property called **className** that can be used to apply a class to a text element that will then apply the font to that element.
+
+``` ts
+// /components/page/Navbar.tsx
+...
+<Link href="/" className={logo.className}>The Sound</Link>
+...
+``

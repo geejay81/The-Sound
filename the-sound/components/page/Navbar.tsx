@@ -1,5 +1,5 @@
 import Link from "next/link";
-import logo from "../fonts/Logo";
+import logo from "../../ui/fonts/Logo";
 
 export default function Navbar() {
 
