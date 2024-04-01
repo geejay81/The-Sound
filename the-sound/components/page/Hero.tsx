@@ -1,4 +1,4 @@
-import logo from "../fonts/Logo";
+import logo from "../../ui/fonts/Logo";
 
 type Props = { 
     heading: string,

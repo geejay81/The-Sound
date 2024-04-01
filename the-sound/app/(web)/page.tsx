@@ -1,4 +1,4 @@
-import logo from "@/components/fonts/Logo";
+import logo from "@/ui/fonts/Logo";
 import Footer from "@/components/page/Footer";
 import Link from "next/link";
 
