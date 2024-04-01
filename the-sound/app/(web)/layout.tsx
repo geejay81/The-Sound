@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "The Sound",
   description: "Web projects, games, quizzes and fun.",
+  
 };
 
 export default function RootLayout({
@@ -17,6 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-9824524266019448" />
+      </head>
       <body className={`${inter.className}`}>
         <Navbar />
         {children}
