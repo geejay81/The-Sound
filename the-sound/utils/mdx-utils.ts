@@ -17,13 +17,13 @@ export const projectsFilePaths = fs
   .readdirSync(PROJECTS_PATH)
   .filter((path) => /\.mdx?$/.test(path));
 
-// export const sortPostsByDate = (posts: Post) => {
-//     return posts.sort((a, b) => {
-//         const aDate = new Date(a.data.date);
-//         const bDate = new Date(b.data.date);
-//         return bDate - aDate;
-//     });
-// };
+export const sortPostsByDate = (posts: any) => {
+    return posts.sort((a: any, b: any) => {
+        const aDate = new Date(a.data.date);
+        const bDate = new Date(b.data.date);
+        return bDate.getTime() - aDate.getTime();
+    });
+};
 
   export const getPosts = () => {
     let posts = postFilePaths.map((filePath) => {
@@ -37,7 +37,7 @@ export const projectsFilePaths = fs
       };
     });
   
-    // posts = sortPostsByDate(posts);
+    posts = sortPostsByDate(posts);
   
     return posts;
   };
