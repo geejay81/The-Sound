@@ -21,7 +21,7 @@ const rollUmpireDie = () => {
     return umpireDie[face];
 }
 
-export default function Howzat({numberOfInnings, oversPerInnings, wicketsPerInnings = 9}: Props) {
+export default function Howzat({numberOfInnings = 1, oversPerInnings = 1, wicketsPerInnings = 9}: Props) {
     const [runs, setRuns] = useState<number>(0);
     const [wickets, setWickets] = useState<string[]>([]);
     const [innings, setInnings] = useState<string[]>([]);

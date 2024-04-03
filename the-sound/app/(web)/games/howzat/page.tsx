@@ -15,7 +15,7 @@ export default function HowzatlePage() {
             <main className="container mx-auto max-w-l p-6 md:pt-16 md:pb-10 space-y-3
                 flex flex-col md:flex-row space-x-3">
                 <div className="md:w-7/12 prose md:prose-lg">
-                    <Howzat />
+                    <Howzat numberOfInnings={1} wicketsPerInnings={9} oversPerInnings={50}  />
                 </div>
             </main>
             <Footer />
