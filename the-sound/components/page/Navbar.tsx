@@ -1,16 +1,25 @@
 import Link from "next/link";
 import logo from "../../ui/fonts/Logo";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolder } from '@fortawesome/free-solid-svg-icons';
 
 export default function Navbar() {
 
     const navLinks = [
         {
             "title": "Projects",
-            "url": "/projects"
+            "url": "/projects",
+            "showInNavbar": true
         },
         {
             "title": "Blog",
-            "url": "/posts"
+            "url": "/posts",
+            "showInNavbar": true
+        },
+        {
+            "title": "Games",
+            "url": "/games",
+            "showInNavbar": false
         }
     ]
 
@@ -22,9 +31,12 @@ export default function Navbar() {
                 </div>
                 <div className="space-x-5">
                     {navLinks &&
-                        navLinks.map((link: any) => (
-                            <Link key={link.url} href={link.url}>
-                                {link.title}
+                        navLinks
+                            .filter((link: any) => link.showInNavbar)
+                            .map((link: any) => (
+                            <Link key={link.url} href={link.url} className="space-x-2">
+                                {/* <FontAwesomeIcon icon={faFolder} /> */}
+                                <span>{link.title}</span>
                             </Link>
                         ))
                     }
