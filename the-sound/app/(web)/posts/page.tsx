@@ -30,7 +30,7 @@ export default function BlogLandingPage() {
                                             <h2 className="text-2xl md:text-3xl">{post.data.title}</h2>
                                             <p className="text-sm">{post.data.date}</p>
                                             <p>{post.data.description}</p>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="mt-4"><path className="stroke-current text-primary" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 19l7-7-7-7"></path></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="mt-4"><path className="stroke-current text-primary" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14M12 19l7-7-7-7"></path></svg>
                                         </div>
                                     </Link>
                                 </li>
