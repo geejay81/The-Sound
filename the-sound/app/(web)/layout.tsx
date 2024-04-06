@@ -23,9 +23,7 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <head>
         <meta name="google-adsense-account" content="ca-pub-9824524266019448" />
-        <Suspense>
-          <GoogleAnalytics GA_MEASUREMENT_ID="G-DHN3V87D1E" />
-        </Suspense>
+        <GoogleAnalytics GA_MEASUREMENT_ID="G-DHN3V87D1E" />
       </head>
       <body className={`${inter.className}`}>
         <Navbar />
