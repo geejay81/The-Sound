@@ -2,7 +2,6 @@ import Footer from "@/components/page/Footer"
 import Hero from "@/components/page/Hero"
 import { Metadata } from "next"
 import Link from "next/link"
-import { FaGamepad } from "react-icons/fa"
 
 export const metadata: Metadata = {
     title: 'Games',

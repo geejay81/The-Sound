@@ -1,6 +1,6 @@
 import Link from "next/link";
 import logo from "../../ui/fonts/Logo";
-import { FaGamepad, FaLaptop, FaQuoteLeft } from 'react-icons/fa';
+import { FaGamepad, FaLaptop, FaQuoteLeft, FaCookieBite } from 'react-icons/fa';
 
 export default function Navbar() {
 
@@ -22,6 +22,12 @@ export default function Navbar() {
             "url": "/games",
             "showInNavbar": true,
             "icon": <FaGamepad className="inline" />
+        },
+        {
+            "title": "Privacy and Cookies",
+            "url": "/privacy-and-cookies",
+            "showInNavbar": true,
+            "icon": <FaCookieBite className="inline" />
         }
     ]
 
@@ -33,16 +39,20 @@ export default function Navbar() {
                         The Sound
                     </Link>
                 </div>
-                <div className="space-x-8">
+                <div className="space-x-4">
                     {navLinks &&
                         navLinks
                             .filter((link: any) => link.showInNavbar)
-                            .map((link: any) => (
-                            <Link key={link.url} href={link.url} title={link.title} className="space-x-2">
-                                {link.icon && link.icon}
-                                <span className="sr-only md:not-sr-only">{link.title}</span>
-                            </Link>
-                        ))
+                            .map((link: any) => {
+                                return (
+                                    <Link key={link.url} href={link.url} title={link.title} 
+                                        className="inline-flex flex-row items-center space-x-2">
+                                        {link.icon && link.icon}
+                                        <span className="sr-only md:not-sr-only">{link.title}</span>
+                                    </Link>
+                                )
+                            }
+                        )
                     }
                 </div> 
             </nav>
