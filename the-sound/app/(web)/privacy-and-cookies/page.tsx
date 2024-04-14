@@ -1,4 +1,5 @@
 import CookieConsent from "@/components/client/CookieConsent";
+import Footer from "@/components/page/Footer";
 import Hero from "@/components/page/Hero";
 import { Metadata } from "next";
 
@@ -35,6 +36,7 @@ export default function PrivacyAndCookiesPage() {
                     
                 </div>   
             </main>
+            <Footer />
         </>
     )
 }
