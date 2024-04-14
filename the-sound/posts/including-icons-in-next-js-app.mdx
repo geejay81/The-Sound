@@ -1,0 +1,141 @@
+---
+title: "Including Icons in Next.js Application"
+description: "Setting up a navbar with icons for each link."
+date: April 14 2024
+topics:
+    - "JavaScript"
+    - "Next.js"
+    - "Fontawesome"
+    - "Tailwind"
+    - "TypeScript"
+---
+
+While creating my site, I wanted to include icons against each navbar option for aesthetic reasons, but also so that I could hide the text descriptions on small viewports.
+
+I have used Font Awesome icons many times before, and started off by following the advice for using these icons on Next.js applications in the guide on the [Font Awesome site](https://docs.fontawesome.com/web/use-with/react/use-with) but I quickly ran in to issues when trying to also use Tailwind CSS stylings.
+
+After some research, I found that there is a great package called [React Icons](https://github.com/react-icons/react-icons#readme) which includes many different icon sets, one of which is the free Font Awesome library.
+
+## Using the icons
+
+This is a simple as importing the icon components you want from the library in your .tsx. or .jsx file, and then adding them to your returned TSX or JSX.
+
+For example, in my application, I decided to use a separate navLinks.ts file to export an object of my navigation links, that can then be imported and looped through to generate links.
+
+This file initially looks like below:
+
+``` ts
+export const navLinks = [
+    {
+        "title": "Projects",
+        "url": "/projects",
+        "showInNavbar": true
+    },
+    {
+        "title": "Blog",
+        "url": "/posts",
+        "showInNavbar": true
+    },
+    {
+        "title": "Games",
+        "url": "/games",
+        "showInNavbar": true
+    },
+    {
+        "title": "Tools",
+        "url": "/tools",
+        "showInNavbar": true
+    }
+]
+```
+
+The first thing I did was rename this to navLinks.tsx, as it would now return an object that includes the **React Icons** components for each icon.
+
+Now I imported the icons that I would be using in the file:
+
+``` tsx
+import { FaCookieBite, FaGamepad, FaLaptop, FaQuoteLeft, FaWrench } from "react-icons/fa";
+...
+```
+
+You can see from the snippet above that I the icons are stored in a folder name 'fa' beneath the 'react-icons' folder. This 'fa' stands for Font Awesome and is where all of the components for their icons are stored, but if you have a look at this package yourselft, you will see that there are lots of different folders, each representing different icons sets from other third party vendors.
+
+Having imported the icons that I need, I was then able to add them to my exported object.
+
+``` tsx
+...
+export const navLinks = [
+    {
+        "title": "Projects",
+        "url": "/projects",
+        "showInNavbar": true,
+        "icon": <FaLaptop className="inline" />
+    },
+    {
+        "title": "Blog",
+        "url": "/posts",
+        "showInNavbar": true,
+        "icon": <FaQuoteLeft className="inline" />
+    },
+    {
+        "title": "Games",
+        "url": "/games",
+        "showInNavbar": true,
+        "icon": <FaGamepad className="inline" />
+    },
+    {
+        "title": "Tools",
+        "url": "/tools",
+        "showInNavbar": true,
+        "icon": <FaWrench className="inline" />
+    }
+];
+```
+
+The attribute 'className="inline"' here is just a Tailwind CSS styling that I've included as it is required for the layout in my navbar component.
+
+Now in the Navbar component, I can import the navLinks object and loop through it to display the links:
+
+``` tsx
+import Link from "next/link";
+import logo from "../../ui/fonts/Logo";
+import { navLinks } from "@/ui/navigation/data";
+
+export default function Navbar() {
+
+    return (
+        <header className="bg-slate-700 text-white">
+            <nav className="container mx-auto max-w-l flex items-center justify-between p-6">
+                <div className="text-2xl md:text-3xl">
+                    <Link href="/" className={logo.className}>
+                        The Sound
+                    </Link>
+                </div>
+                <div className="space-x-4">
+                    {navLinks &&
+                        navLinks
+                            .filter((link: any) => link.showInNavbar)
+                            .map((link: any) => {
+                                return (
+                                    <Link key={link.url} href={link.url} title={link.title} 
+                                        className="inline-flex flex-row items-center space-x-2">
+                                        {link.icon && link.icon}
+                                        <span className="sr-only md:not-sr-only">{link.title}</span>
+                                    </Link>
+                                )
+                            }
+                        )
+                    }
+                </div> 
+            </nav>
+        </header>
+    )
+}
+
+```
+
+As you can see from the code above, all I have to do is ad \{link.icon && link.icon\} to first make sure that the icon has been provided as part of the current link that is being processed and then output the component.
+
+## Conclusion
+
+There may have been a number of reasons why the process suggested on the Font Awesome website didn't work for me, but I feel like even if it had work, it was still quite a bit more involved than just being able to import the icon components I need from the React Icons library and use it on the page.
