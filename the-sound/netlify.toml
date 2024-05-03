@@ -1,3 +1,9 @@
 [build]
   command = "npm run build"
   publish = ".next"
+
+[[redirects]]
+  from = "/ads.txt"
+  to = "https://ads.adthrive.com/sites/661d92207322510b020ba871/ads.txt"
+  status = 301
+  force = true
